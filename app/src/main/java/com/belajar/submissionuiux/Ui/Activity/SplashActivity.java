@@ -1,4 +1,4 @@
-package com.belajar.submissionuiux.Ui;
+package com.belajar.submissionuiux.Ui.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;

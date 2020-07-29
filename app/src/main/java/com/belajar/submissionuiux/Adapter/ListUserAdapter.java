@@ -1,13 +1,17 @@
 package com.belajar.submissionuiux.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.belajar.submissionuiux.Model.User;
@@ -22,6 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListViewHolder> {
 
     private List<User> mUser = new ArrayList<>();
+    private Context mContext;
 
     public void setmUser(List<User> mUser) {
         this.mUser = mUser;
@@ -41,8 +46,7 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListVi
         User user = mUser.get(position);
 
         holder.bind(mUser.get(position));
-
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), user.getName(), Toast.LENGTH_SHORT).show();
@@ -57,13 +61,14 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListVi
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {
 
-        private CardView cardView;
+//        private CardView cardView;
+        private RelativeLayout container;
         private CircleImageView ivAvatar;
         private TextView tvName, tvLink;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cardView);
+            container = itemView.findViewById(R.id.container);
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
             tvName = itemView.findViewById(R.id.tvName);
             tvLink = itemView.findViewById(R.id.tvLink);

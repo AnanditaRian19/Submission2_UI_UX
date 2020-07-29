@@ -7,10 +7,12 @@
         android:icon="@drawable/search_24"
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="always|collapseActionView" />
+        app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/changeLanguage"
+        app:showAsAction="never"
+        android:icon="@drawable/language_24"
         android:title="@string/change_language" />
 
 </menu>

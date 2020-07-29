@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Submission UI UX</string>
+    <string name="link">https://www.github.com/AnanditaRian19</string>
+    <string name="name">Rizki Rian Anandita</string>
     <string name="search">Cari</string>
     <string name="change_language">Ubah Bahasa</string>
     <string name="enter_name">Masukan Nama</string>
+    <string name="indonesia">Indonesia</string>
+    <string name="english">Inggris</string>
 </resources>
