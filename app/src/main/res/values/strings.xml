@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">Submission UI UX</string>
+    <string name="link" translatable="false">https://www.github.com/AnanditaRian19</string>
+    <string name="name" translatable="false">Rizki Rian Anandita</string>
+    <string name="search">Search</string>
+    <string name="change_language">Change Language</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="github_user">Github User</string>
+</resources>
