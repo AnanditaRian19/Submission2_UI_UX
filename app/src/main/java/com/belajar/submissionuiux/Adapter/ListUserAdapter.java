@@ -21,14 +21,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListViewHolder> {
 
-//    public Context context;
-//    private List<User> mUser;
-//
-//    public ListUserAdapter(Context context, List<User> mUser) {
-//        this.context = context;
-//        this.mUser = mUser;
-//    }
-
     private List<User> mUser = new ArrayList<>();
 
     public void setmUser(List<User> mUser) {
