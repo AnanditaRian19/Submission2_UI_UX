@@ -4,12 +4,8 @@
     <color name="colorPrimaryDark">#F57C00</color>
     <color name="colorAccent">#F57C00</color>
 
-    <color name="colorOther">#03DAC5</color>
     <color name="cardBackground">#f6f6f6</color>
-    <color name="cardBackgroundDark">#0e0e0e</color>
-    <color name="titleText">#258bd6</color>
     <color name="contentText">#999da4</color>
 
     <color name="white">#FFF</color>
-    <color name="black">#000</color>
 </resources>
