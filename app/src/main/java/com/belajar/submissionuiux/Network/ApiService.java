@@ -12,6 +12,6 @@ public interface ApiService {
 
     @GET("users")
     Call<List<User>> getUser(
-            @Header("Authentication") String token
+            @Header("Authorization") String token
     );
 }

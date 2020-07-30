@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.belajar.submissionuiux.Model.User;
@@ -20,14 +21,6 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListViewHolder> {
-
-//    public Context context;
-//    private List<User> mUser;
-//
-//    public ListUserAdapter(Context context, List<User> mUser) {
-//        this.context = context;
-//        this.mUser = mUser;
-//    }
 
     private List<User> mUser = new ArrayList<>();
 
@@ -50,7 +43,7 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListVi
 
         holder.bind(mUser.get(position));
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.rootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), user.getName(), Toast.LENGTH_SHORT).show();
@@ -65,13 +58,13 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListVi
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {
 
-        private CardView cardView;
+        private ConstraintLayout rootLayout;
         private CircleImageView ivAvatar;
         private TextView tvName, tvLink;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cardView);
+            rootLayout = itemView.findViewById(R.id.rootLayout);
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
             tvName = itemView.findViewById(R.id.tvName);
             tvLink = itemView.findViewById(R.id.tvLink);

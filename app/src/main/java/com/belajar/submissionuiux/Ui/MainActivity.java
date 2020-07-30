@@ -59,26 +59,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         shimmerFrameLayout = findViewById(R.id.shimmerLayout);
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-//        setRecyclerView();
-//        getDataUser();
-
-//        ListUserAdapter adapter = new ListUserAdapter();
-
-
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(null);
+            getSupportActionBar().setTitle("Github Users");
         }
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ListUserAdapter();
-//        adapter.notifyDataSetChanged();
-        recyclerView.setAdapter(adapter);
+        setRecyclerView();
+        mainViewModel();
+    }
 
+    private void setRecyclerView() {
+        adapter = new ListUserAdapter();
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void mainViewModel() {
         mainViewModel = new ViewModelProvider(this,
                 new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
         mainViewModel.getmUser().observe(this, new Observer<List<User>>() {
@@ -93,48 +93,6 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.setData();
         shimmerFrameLayout.stopShimmer();
         shimmerFrameLayout.setVisibility(View.GONE);
-
-//        mainViewModel.setData();
-//        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-//        mainViewModel.getData();
-//        mainViewModel.mUser.observe(this, new Observer<List<User>>() {
-//            @Override
-//            public void onChanged(List<User> users) {
-//                adapter.
-//            }
-//        });
-    }
-
-    private void setRecyclerView() {
-//        ListUserAdapter listUserAdapter = new ListUserAdapter();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.smoothScrollToPosition(0);
-//        RecyclerView.Adapter mAdapter = new ListUserAdapter(context, users);
-//        recyclerView.setAdapter(mAdapter);
-    }
-
-    private void getDataUser() {
-        ApiService apiService = ServiceGenerator.getConnection()
-                .create(ApiService.class);
-        Call<List<User>> call = apiService.getUser(Const.TOKEN);
-        call.enqueue(new Callback<List<User>>() {
-            @Override
-            public void onResponse(@NotNull Call<List<User>> call, @NotNull Response<List<User>> response) {
-
-//                ListUserAdapter listUserAdapter = new ListUserAdapter(MainActivity.this, response.body());
-//                recyclerView.setAdapter(listUserAdapter);
-//                shimmerFrameLayout.stopShimmer();
-//                shimmerFrameLayout.setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void onFailure(@NotNull Call<List<User>> call, @NotNull Throwable t) {
-                Log.e("onFailure: ", Objects.requireNonNull(t.getMessage()));
-            }
-        });
     }
 
     @Override
