@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainViewModel extends ViewModel {
+public class userViewModel extends ViewModel {
 
     private MutableLiveData<List<User>> mUser = new MutableLiveData<>();
 

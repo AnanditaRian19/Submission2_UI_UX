@@ -4,22 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,23 +21,12 @@ import android.view.View;
 
 import com.belajar.submissionuiux.Adapter.ListUserAdapter;
 import com.belajar.submissionuiux.Model.User;
-import com.belajar.submissionuiux.Network.ApiService;
-import com.belajar.submissionuiux.Network.Const;
-import com.belajar.submissionuiux.Network.ServiceGenerator;
 import com.belajar.submissionuiux.R;
-import com.belajar.submissionuiux.ViewModel.MainViewModel;
+import com.belajar.submissionuiux.ViewModel.userViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
     private List<User> users = new ArrayList<>();
     private ShimmerFrameLayout shimmerFrameLayout;
-    private MainViewModel mainViewModel;
+    private userViewModel userViewModel;
     private ListUserAdapter adapter = new ListUserAdapter();
 
     @Override
@@ -69,30 +52,30 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Github Users");
         }
 
-        setRecyclerView();
-        mainViewModel();
+        setMainRecyclerView();
+        userViewModel();
     }
 
-    private void setRecyclerView() {
+    private void setMainRecyclerView() {
         adapter = new ListUserAdapter();
         recyclerView.setAdapter(adapter);
     }
 
-    private void mainViewModel() {
-        mainViewModel = new ViewModelProvider(this,
-                new ViewModelProvider.NewInstanceFactory()).get(MainViewModel.class);
-        mainViewModel.getmUser().observe(this, new Observer<List<User>>() {
+    private void userViewModel() {
+        userViewModel = new ViewModelProvider(this,
+                new ViewModelProvider.NewInstanceFactory()).get(userViewModel.class);
+        userViewModel.getmUser().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
                 if (users != null) {
                     adapter.setmUser(users);
+                    shimmerFrameLayout.stopShimmer();
+                    shimmerFrameLayout.setVisibility(View.GONE);
                 }
             }
         });
 
-        mainViewModel.setData();
-        shimmerFrameLayout.stopShimmer();
-        shimmerFrameLayout.setVisibility(View.GONE);
+        userViewModel.setData();
     }
 
     @Override

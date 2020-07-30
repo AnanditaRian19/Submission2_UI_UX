@@ -38,17 +38,7 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListVi
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-
-        User user = mUser.get(position);
-
         holder.bind(mUser.get(position));
-
-        holder.rootLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), user.getName(), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
@@ -76,6 +66,13 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ListVi
                     .into(ivAvatar);
             tvName.setText(mUser.getName());
             tvLink.setText(mUser.getUrl());
+
+            rootLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(view.getContext(), mUser.getName(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
