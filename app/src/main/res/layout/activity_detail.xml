@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".Ui.Activity.DetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@color/white" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivAvatar"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/bg"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvName"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/bg" />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvType"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/bg" />
+
+        <TextView
+            android:id="@+id/tvCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLocation"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/bg" />
+
+        <TextView
+            android:id="@+id/tvHtmlUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCompany"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/purple" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ivAvatar"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="40dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvFollowers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="@string/none"
+                    android:textColor="@color/bg"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/followers"
+                    android:textColor="@color/bg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvFollowing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="@string/none"
+                    android:textColor="@color/bg"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/following"
+                    android:textColor="@color/bg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvRepos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="@string/none"
+                    android:textColor="@color/bg"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/repository"
+                    android:textColor="@color/bg" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:shimmer_auto_start="true"
+            app:shimmer_duration="1000"
+            app:shimmer_repeat_mode="restart">
+
+            <include layout="@layout/shimmer_detail" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User implements Parcelable {
+public class User{
 
     @SerializedName("avatar_url")
     private String avatarUrl;
@@ -13,36 +13,25 @@ public class User implements Parcelable {
     private String name;
     @SerializedName("html_url")
     private String url;
+    private String type;
+    private int id;
 
-    protected User(Parcel in) {
-        avatarUrl = in.readString();
-        name = in.readString();
-        url = in.readString();
+
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(avatarUrl);
-        dest.writeString(name);
-        dest.writeString(url);
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getType() {
+        return type;
     }
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getAvatarUrl() {
         return avatarUrl;

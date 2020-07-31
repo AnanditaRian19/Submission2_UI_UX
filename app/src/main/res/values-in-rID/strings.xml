@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Submission UI UX</string>
+    <string name="app_name">Github</string>
     <string name="search">Cari</string>
     <string name="change_language">Ubah Bahasa</string>
     <string name="enter_name">Masukan Nama</string>
+    <string name="toast_searching">Mencari Pengguna, Silakan Tunggu…</string>
+    <string name="data_not_found">Pengguna Tidak Ditemukan</string>
 </resources>

@@ -1,9 +1,20 @@
 <resources>
-    <string name="app_name" translatable="false">Submission UI UX</string>
+    <string name="app_name" translatable="false">Github</string>
     <string name="link" translatable="false">https://www.github.com/AnanditaRian19</string>
     <string name="name" translatable="false">Rizki Rian Anandita</string>
     <string name="search">Search</string>
     <string name="change_language">Change Language</string>
     <string name="enter_name">Enter Name</string>
-    <string name="github_user">Github User</string>
+    <string name="github_user" translatable="false">Github User</string>
+    <string name="toast_searching">Please wait, Searching User…</string>
+    <string name="data_not_found">User Not Found</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="repository">Repository</string>
+    <string name="none">-</string>
+    <string name="id">65359346</string>
+    <string name="type">Type</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
