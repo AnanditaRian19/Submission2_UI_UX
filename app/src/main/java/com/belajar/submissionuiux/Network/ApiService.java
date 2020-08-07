@@ -23,12 +23,18 @@ public interface ApiService {
     @GET("users/{username}")
     Call<UserDetail> getUserDetail(
             @Path("username") String username,
-            @Header("Authorization")  String token
+            @Header("Authorization") String token
     );
 
     @GET("users/{username}/followers")
-    Call<List<User>> getFollowers (
-      @Path("username") String username,
-      @Header("Authorization") String token
+    Call<List<User>> getFollowers(
+            @Path("username") String username,
+            @Header("Authorization") String token
+    );
+
+    @GET("users/{username}/following")
+    Call<List<User>> getFollowing(
+            @Path("username") String username,
+            @Header("Authorization") String token
     );
 }

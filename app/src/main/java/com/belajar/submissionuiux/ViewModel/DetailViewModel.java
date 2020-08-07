@@ -22,6 +22,7 @@ import retrofit2.Response;
 public class DetailViewModel extends ViewModel {
 
     private MutableLiveData<UserDetail> mUserDetail = new MutableLiveData<>();
+    public static final String TAG = DetailViewModel.class.getSimpleName();
 
     public LiveData<UserDetail> getUserDetail() {
         return mUserDetail;
@@ -37,9 +38,9 @@ public class DetailViewModel extends ViewModel {
                 if (response.body() != null) {
                     UserDetail userDetail = response.body();
                     mUserDetail.setValue(userDetail);
-                    Log.i("Success", String.valueOf(response.body()));
+                    Log.i(TAG, "Success");
                 } else {
-                    Log.i("Failed", String.valueOf(response.body()));
+                    Log.i(TAG, "Failed");
                 }
             }
 

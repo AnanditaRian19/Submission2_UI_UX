@@ -28,6 +28,7 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
     private Context mContext;
     private List<User> mUser;
 
+
     public ListUserSearchAdapter(Context mContext, List<User> mUser) {
         this.mContext = mContext;
         this.mUser = mUser;
@@ -43,11 +44,11 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
         holder.bind(mUser.get(position));
+        User user = mUser.get(position);
 
-        holder.rootLayout.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent mIntent = new Intent(mContext, DetailActivity.class);
                 mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -55,6 +56,8 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
                 mBundle.putString(Const.BUNDLE_DATA, mUser.get(position).getName());
                 mIntent.putExtras(mBundle);
                 mContext.startActivity(mIntent);
+
+                Toast.makeText(mContext, user.getName(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -77,6 +80,13 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
             tvName = itemView.findViewById(R.id.tvName);
             tvType = itemView.findViewById(R.id.tvType);
             tvId = itemView.findViewById(R.id.tvId);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
 
         private void bind(User mUser) {
@@ -100,4 +110,5 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
         this.mUser.clear();
         notifyDataSetChanged();
     }
+
 }

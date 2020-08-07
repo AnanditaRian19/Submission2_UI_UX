@@ -62,8 +62,8 @@ public class DetailActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), this);
-        viewPager.setAdapter(adapter);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this);
+        viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
         try {

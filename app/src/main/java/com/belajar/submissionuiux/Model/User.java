@@ -1,11 +1,8 @@
 package com.belajar.submissionuiux.Model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
 
-public class User{
+public class User {
 
     @SerializedName("avatar_url")
     private String avatarUrl;
@@ -15,7 +12,6 @@ public class User{
     private String url;
     private String type;
     private int id;
-
 
     public int getId() {
         return id;

@@ -16,11 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.belajar.submissionuiux.Adapter.ListUserSearchAdapter;
-import com.belajar.submissionuiux.Model.SearchUser;
 import com.belajar.submissionuiux.Model.User;
-import com.belajar.submissionuiux.Network.ApiService;
 import com.belajar.submissionuiux.Network.Const;
-import com.belajar.submissionuiux.Network.ServiceGenerator;
 import com.belajar.submissionuiux.R;
 import com.belajar.submissionuiux.ViewModel.FollowersViewModel;
 
@@ -28,16 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class FollowersFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ListUserSearchAdapter listUserSearchAdapter;
-    private List<User> users = new ArrayList<>();
     private FollowersViewModel followersViewModel;
+    private List<User> mUser = new ArrayList<>();
 
     public static final String TAG = FollowersFragment.class.getSimpleName();
 
@@ -53,6 +46,7 @@ public class FollowersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.recyclerView);
+
         setRecyclerView();
         getFollowers();
 
@@ -62,7 +56,7 @@ public class FollowersFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.smoothScrollToPosition(0);
-        listUserSearchAdapter = new ListUserSearchAdapter(getContext(), users);
+        listUserSearchAdapter = new ListUserSearchAdapter(getContext(), mUser);
         recyclerView.setAdapter(listUserSearchAdapter);
         listUserSearchAdapter.notifyDataSetChanged();
     }
@@ -76,9 +70,10 @@ public class FollowersFragment extends Fragment {
         followersViewModel.getUserFollower().observe(Objects.requireNonNull(getActivity()), new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
-                listUserSearchAdapter.setData(users);
+                    listUserSearchAdapter.setData(users);
             }
         });
+
         followersViewModel.setDataFollower(username);
     }
 }

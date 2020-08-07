@@ -23,6 +23,7 @@ import retrofit2.Response;
 public class FollowersViewModel extends ViewModel {
 
     private MutableLiveData<List<User>> mUser = new MutableLiveData<>();
+    public static final String TAG = FollowersViewModel.class.getSimpleName();
 
     public LiveData<List<User>> getUserFollower() {
         return mUser;
@@ -36,10 +37,10 @@ public class FollowersViewModel extends ViewModel {
             @Override
             public void onResponse(@NotNull Call<List<User>> call, @NotNull Response<List<User>> response) {
                 if (response.body() != null) {
-                    Log.i("Success", String.valueOf(response.body()));
+                    Log.i(TAG, "Success");
                     mUser.setValue(response.body());
                 } else {
-                    Log.e("Failed", String.valueOf(response.body()));
+                    Log.e(TAG, "Failed");
                 }
             }
 
