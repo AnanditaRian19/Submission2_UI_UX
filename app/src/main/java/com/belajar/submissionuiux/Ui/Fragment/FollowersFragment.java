@@ -1,10 +1,12 @@
 package com.belajar.submissionuiux.Ui.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,11 +16,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.belajar.submissionuiux.Adapter.ListUserSearchAdapter;
 import com.belajar.submissionuiux.Model.User;
 import com.belajar.submissionuiux.Network.Const;
 import com.belajar.submissionuiux.R;
+import com.belajar.submissionuiux.Ui.Activity.DetailActivity;
+import com.belajar.submissionuiux.Ui.Activity.UserSearchActivity;
 import com.belajar.submissionuiux.ViewModel.FollowersViewModel;
 
 import java.util.ArrayList;
@@ -59,6 +64,19 @@ public class FollowersFragment extends Fragment {
         listUserSearchAdapter = new ListUserSearchAdapter(getContext(), mUser);
         recyclerView.setAdapter(listUserSearchAdapter);
         listUserSearchAdapter.notifyDataSetChanged();
+
+        listUserSearchAdapter.setOnItemClickCallback(new ListUserSearchAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(User user, int posistion) {
+                Intent mIntent = new Intent(getContext(), DetailActivity.class);
+                mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                Bundle mBundle = new Bundle();
+                mBundle.putString(Const.BUNDLE_DATA, user.getName());
+                mIntent.putExtras(mBundle);
+                startActivity(mIntent);
+            }
+        });
     }
 
     private void getFollowers() {

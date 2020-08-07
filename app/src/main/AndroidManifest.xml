@@ -13,7 +13,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Ui.Activity.DetailActivity"
-            android:launchMode="singleTask"
             android:parentActivityName=".Ui.Activity.UserSearchActivity"
             android:theme="@style/Detail" />
         <activity android:name=".Ui.Activity.SplashActivity">

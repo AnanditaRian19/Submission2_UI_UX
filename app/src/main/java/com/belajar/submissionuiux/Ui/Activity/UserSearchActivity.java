@@ -25,6 +25,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.belajar.submissionuiux.Adapter.ListUserSearchAdapter;
 import com.belajar.submissionuiux.Model.SearchUser;
 import com.belajar.submissionuiux.Model.User;
+import com.belajar.submissionuiux.Model.UserDetail;
+import com.belajar.submissionuiux.Network.Const;
 import com.belajar.submissionuiux.R;
 import com.belajar.submissionuiux.ViewModel.UserSearchViewModel;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -74,7 +76,23 @@ public class UserSearchActivity extends AppCompatActivity {
         listUserSearchAdapter = new ListUserSearchAdapter(this, users);
         recyclerView.setAdapter(listUserSearchAdapter);
         listUserSearchAdapter.notifyDataSetChanged();
+
+        listUserSearchAdapter.setOnItemClickCallback(new ListUserSearchAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(User user, int posistion) {
+                Intent mIntent = new Intent(UserSearchActivity.this, DetailActivity.class);
+                mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                Bundle mBundle = new Bundle();
+                mBundle.putString(Const.BUNDLE_DATA, user.getName());
+                mIntent.putExtras(mBundle);
+                startActivity(mIntent);
+
+                Toast.makeText(UserSearchActivity.this, user.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
     private void userSearchViewMode() {
         userSearchViewModel = new ViewModelProvider(this,

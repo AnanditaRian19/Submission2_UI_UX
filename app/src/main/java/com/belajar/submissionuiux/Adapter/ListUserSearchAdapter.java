@@ -3,6 +3,7 @@ package com.belajar.submissionuiux.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
 
     private Context mContext;
     private List<User> mUser;
-
+    private static final String TAG = "ListUserSearchAdapter";
 
     public ListUserSearchAdapter(Context mContext, List<User> mUser) {
         this.mContext = mContext;
@@ -49,6 +50,7 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent mIntent = new Intent(mContext, DetailActivity.class);
                 mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -58,6 +60,8 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
                 mContext.startActivity(mIntent);
 
                 Toast.makeText(mContext, user.getName(), Toast.LENGTH_SHORT).show();
+                */
+                onItemClickCallback.onItemClicked(mUser.get(holder.getAdapterPosition()), position);
             }
         });
     }
@@ -80,19 +84,12 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
             tvName = itemView.findViewById(R.id.tvName);
             tvType = itemView.findViewById(R.id.tvType);
             tvId = itemView.findViewById(R.id.tvId);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
         }
 
         private void bind(User mUser) {
             Glide.with(itemView.getContext())
                     .load(mUser.getAvatarUrl())
-                    .apply(new RequestOptions().override(50,50))
+                    .apply(new RequestOptions().override(50, 50))
                     .into(ivAvatar);
             tvName.setText(mUser.getName());
             tvId.setText(String.valueOf(mUser.getId()));
@@ -111,4 +108,12 @@ public class ListUserSearchAdapter extends RecyclerView.Adapter<ListUserSearchAd
         notifyDataSetChanged();
     }
 
+    private OnItemClickCallback onItemClickCallback;
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(User user, int posistion);
+    }
 }
